@@ -1,0 +1,1 @@
+import { analyzeLocation } from './src/modules/complaint/location-intelligence.service'; async function main() { try { const data = await analyzeLocation('f7aac19c-89b6-448d-a015-05d0d725004e'); console.log(JSON.stringify(data, null, 2)); } catch (e) { console.error('ERROR:', e); } } main();

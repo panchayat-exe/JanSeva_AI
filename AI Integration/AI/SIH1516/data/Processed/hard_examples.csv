@@ -1,0 +1,191 @@
+﻿complaint_text,subcategory
+road pe bada gadda hai,Pothole
+deep hole in middle of road,Pothole
+school ke bahar road me gadda hai,Pothole
+bike wale pothole ki wajah se gir rahe hain,Pothole
+dangerous pit on main road,Pothole
+road ke beech huge pothole,Pothole
+road pura toot gaya hai,Damaged Road
+street surface is completely broken,Damaged Road
+sadak ki halat bahut kharab hai,Damaged Road
+road surface cracked everywhere,Damaged Road
+main road ka asphalt nikal gaya,Damaged Road
+the entire road needs repair,Damaged Road
+footpath tiles are broken,Damaged Footpath
+paidal chalne ka rasta toot gaya hai,Damaged Footpath
+broken pavement near market,Damaged Footpath
+footpath pe slabs toot gaye,Damaged Footpath
+sidewalk is damaged badly,Damaged Footpath
+pedestrian path unsafe hai,Damaged Footpath
+construction material blocking road,Road Obstruction
+road pe malba pada hai,Road Obstruction
+debris blocking vehicles,Road Obstruction
+sadak par saman rakh ke rasta block kiya hai,Road Obstruction
+large object blocking the street,Road Obstruction
+road is blocked by construction debris,Road Obstruction
+3 din se pani nhi aa rha,No Water Supply
+no water since yesterday,No Water Supply
+hamare area me water supply band hai,No Water Supply
+taps are completely dry,No Water Supply
+do din se nal me pani nahi hai,No Water Supply
+water supply stopped in colony,No Water Supply
+pipeline se pani leak ho raha hai,Water Leakage
+water pipe burst on road,Water Leakage
+main water line is leaking,Water Leakage
+road pe pipe se pani bah raha hai,Water Leakage
+broken pipeline wasting water,Water Leakage
+water leakage near my house,Water Leakage
+nal me pani bohot slow aa raha hai,Low Water Pressure
+very low water pressure,Low Water Pressure
+upper floor tak pani nahi aa raha,Low Water Pressure
+tap pressure is extremely weak,Low Water Pressure
+pani ka pressure bahut kam hai,Low Water Pressure
+barely any water coming from tap,Low Water Pressure
+tap se black water aa raha hai,Contaminated Water
+dirty water coming from taps,Contaminated Water
+pani me bad smell aa rahi hai,Contaminated Water
+brown drinking water supplied,Contaminated Water
+nal ka pani ganda hai,Contaminated Water
+water looks contaminated,Contaminated Water
+gutter jam ho gaya hai,Blocked Drain
+drain completely clogged,Blocked Drain
+nali me pani flow nahi ho raha,Blocked Drain
+garbage has blocked the drain,Blocked Drain
+drain choke ho gaya,Blocked Drain
+blocked gutter near house,Blocked Drain
+gutter ka ganda pani road pe aa raha hai,Sewage Overflow
+sewage flowing on street,Sewage Overflow
+manhole se dirty water nikal raha,Sewage Overflow
+sewer overflowing outside house,Sewage Overflow
+ganda sewer water road pe hai,Sewage Overflow
+sewage coming out of manhole,Sewage Overflow
+open drain outside school,Open/Broken Drain
+nali ka cover missing hai,Open/Broken Drain
+broken gutter is dangerous,Open/Broken Drain
+khuli nali road ke side me hai,Open/Broken Drain
+drain slab has broken,Open/Broken Drain
+uncovered drain near footpath,Open/Broken Drain
+road pe baarish ka pani jama hai,Waterlogging
+street completely flooded,Waterlogging
+colony me waterlogging hai,Waterlogging
+rain water not draining,Waterlogging
+sadak pani me dubi hui hai,Waterlogging
+standing water all over road,Waterlogging
+3 din se garbage nahi uthaya,Garbage Not Collected
+trash collection has stopped,Garbage Not Collected
+kachra gadi nahi aa rahi,Garbage Not Collected
+waste lying uncollected,Garbage Not Collected
+garbage collector did not come,Garbage Not Collected
+ghar ka kachra kai din se pada hai,Garbage Not Collected
+dustbin pura bhar gaya hai,Overflowing Garbage Bin
+garbage coming out of bin,Overflowing Garbage Bin
+kachra dabba overflow ho raha,Overflowing Garbage Bin
+public bin is completely full,Overflowing Garbage Bin
+trash spilling onto road,Overflowing Garbage Bin
+bin urgently needs emptying,Overflowing Garbage Bin
+people dumping garbage on empty plot,Illegal Garbage Dumping
+roadside pe illegally kachra feka ja raha,Illegal Garbage Dumping
+someone dumped construction waste here,Illegal Garbage Dumping
+public place being used as dump,Illegal Garbage Dumping
+raat me yaha kachra fek dete hain,Illegal Garbage Dumping
+illegal waste dumping near river,Illegal Garbage Dumping
+dead dog lying on road,Dead Animal
+roadside pe mara hua janwar hai,Dead Animal
+dead cow needs removal,Dead Animal
+animal body causing bad smell,Dead Animal
+mara hua kutta market ke paas pada hai,Dead Animal
+animal carcass on street,Dead Animal
+whole street is dark every night,Streetlight Not Working
+street light band hai,Streetlight Not Working
+lamp post light not turning on,Streetlight Not Working
+raat ko colony me light nahi jalti,Streetlight Not Working
+streetlight fused near bus stop,Streetlight Not Working
+all public lights are off,Streetlight Not Working
+street light pole is leaning,Damaged Streetlight Pole
+light ka khamba toot gaya,Damaged Streetlight Pole
+lamp post damaged after accident,Damaged Streetlight Pole
+pole road ki taraf jhuk gaya hai,Damaged Streetlight Pole
+streetlight pole may fall,Damaged Streetlight Pole
+broken lighting pole near school,Damaged Streetlight Pole
+live electric wire fallen on road,Exposed Electrical Wire
+person injured by exposed electric wire,Exposed Electrical Wire
+school ke bahar electric wire latak rahi hai,Exposed Electrical Wire
+bijli ka taar road pe gir gaya hai,Exposed Electrical Wire
+current wala wire niche pada hai,Exposed Electrical Wire
+dangerous live cable exposed,Exposed Electrical Wire
+electric cable is hanging from pole,Exposed Electrical Wire
+open electrical wires near footpath,Exposed Electrical Wire
+wire me current hai aur road pe pada hai,Exposed Electrical Wire
+live wire hanging dangerously low,Exposed Electrical Wire
+tree fell across the road,Fallen Tree
+ped road pe gir gaya hai,Fallen Tree
+storm me tree road par gir gaya,Fallen Tree
+fallen tree blocking vehicles,Fallen Tree
+bada tree street ke beech gira hai,Fallen Tree
+tree collapsed near market,Fallen Tree
+tree looks like it may fall,Dangerous Tree
+ped bahut dangerous tarike se jhuk gaya,Dangerous Tree
+large branch may fall,Dangerous Tree
+weak tree near school,Dangerous Tree
+dead tree can collapse anytime,Dangerous Tree
+dangerous hanging tree branch,Dangerous Tree
+park equipment is broken,Damaged Park
+park ki benches toot gayi hain,Damaged Park
+children play area damaged,Damaged Park
+park gate is broken,Damaged Park
+public park equipment damaged,Damaged Park
+playground structure toot gaya,Damaged Park
+park needs cleaning,Park Maintenance
+garden ki safai nahi hui,Park Maintenance
+grass in park is overgrown,Park Maintenance
+public garden needs maintenance,Park Maintenance
+park bahut dirty hai,Park Maintenance
+garden has not been maintained,Park Maintenance
+traffic signal band hai,Traffic Signal Not Working
+red light is not working,Traffic Signal Not Working
+signal at junction stopped functioning,Traffic Signal Not Working
+traffic lights completely dead,Traffic Signal Not Working
+chowk ka signal kharab hai,Traffic Signal Not Working
+traffic signal not changing,Traffic Signal Not Working
+traffic sign board broken,Damaged Traffic Sign
+road sign gir gaya hai,Damaged Traffic Sign
+speed limit board damaged,Damaged Traffic Sign
+traffic sign is unreadable,Damaged Traffic Sign
+direction board toot gaya,Damaged Traffic Sign
+damaged road sign near junction,Damaged Traffic Sign
+zebra crossing faded,Road Marking Issue
+road markings are invisible,Road Marking Issue
+lane lines mit gayi hain,Road Marking Issue
+road paint needs repainting,Road Marking Issue
+crosswalk markings disappeared,Road Marking Issue
+sadak ki white lines nahi dikh rahi,Road Marking Issue
+vehicle blocking traffic,Traffic Obstruction
+truck road ke beech khada hai,Traffic Obstruction
+traffic blocked by illegally parked vehicle,Traffic Obstruction
+car is obstructing the lane,Traffic Obstruction
+road pe vehicle se jam lag raha,Traffic Obstruction
+vehicle causing major traffic obstruction,Traffic Obstruction
+shop has occupied the footpath,Illegal Encroachment
+public road pe illegal kabza hai,Illegal Encroachment
+footpath encroached by vendor,Illegal Encroachment
+someone occupied government land,Illegal Encroachment
+public space illegally occupied,Illegal Encroachment
+sadak ka hissa kabza kar liya hai,Illegal Encroachment
+unauthorized building construction,Illegal Construction
+bina permission construction chal raha,Illegal Construction
+illegal structure being built,Illegal Construction
+construction without municipal approval,Illegal Construction
+illegal building work in colony,Illegal Construction
+permission ke bina building ban rahi hai,Illegal Construction
+public bench has been broken,Damaged Public Property
+government property damaged,Damaged Public Property
+bus stop shelter toot gaya,Damaged Public Property
+public infrastructure vandalized,Damaged Public Property
+municipal property is damaged,Damaged Public Property
+public facility broken badly,Damaged Public Property
+illegal billboard installed,Unauthorized Hoarding
+bina permission hoarding laga hai,Unauthorized Hoarding
+unauthorized advertisement board,Unauthorized Hoarding
+huge illegal banner on road,Unauthorized Hoarding
+public pole pe illegal hoarding hai,Unauthorized Hoarding
+billboard installed without permission,Unauthorized Hoarding

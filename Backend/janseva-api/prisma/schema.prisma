@@ -1,0 +1,419 @@
+// ============================================================
+// JanSeva AI — Prisma Database Schema
+// Production-grade schema for Government Grievance Platform
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── Enums ─────────────────────────────────────────────────
+
+enum Role {
+  CITIZEN
+  OFFICER
+  DEPT_ADMIN
+  SUPER_ADMIN
+}
+
+enum OtpType {
+  EMAIL
+  PHONE
+}
+
+enum ComplaintStatus {
+  DRAFT
+  SUBMITTED
+  WAITING_FOR_ASSIGNMENT
+  ASSIGNED
+  IN_PROGRESS
+  RESOLVED
+  AWAITING_CITIZEN_VERIFICATION
+  VERIFIED
+  CLOSED
+  REOPENED
+  ESCALATED
+  REJECTED
+}
+
+enum ComplaintPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ComplaintCategory {
+  WATER_SUPPLY
+  ELECTRICITY
+  GARBAGE_SANITATION
+  ROADS_INFRASTRUCTURE
+  DRAINAGE_SEWAGE
+  STREET_LIGHTS
+  PARKS_RECREATION
+  BUILDING_PERMITS
+  NOISE_POLLUTION
+  AIR_POLLUTION
+  PUBLIC_TRANSPORT
+  LAW_AND_ORDER
+  HEALTH_SERVICES
+  EDUCATION
+  OTHER
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  DOCUMENT
+}
+
+enum MediaRole {
+  COMPLAINT_EVIDENCE
+  BEFORE_REPAIR
+  AFTER_REPAIR
+  OFFICER_REPORT
+}
+
+enum NotificationType {
+  COMPLAINT_SUBMITTED
+  STATUS_UPDATED
+  COMPLAINT_ASSIGNED
+  COMPLAINT_RESOLVED
+  COMPLAINT_REOPENED
+  COMPLAINT_ESCALATED
+  VERIFICATION_REQUIRED
+  PASSWORD_CHANGED
+  EMAIL_VERIFIED
+  SYSTEM
+}
+
+enum TimelineEventType {
+  COMPLAINT_CREATED
+  STATUS_CHANGED
+  OFFICER_ASSIGNED
+  NOTE_ADDED
+  MEDIA_UPLOADED
+  ESCALATED
+  RESOLVED
+  VERIFICATION_SUBMITTED
+  REOPENED
+  CLOSED
+  AI_ANALYZED
+}
+
+enum AuditAction {
+  CREATE
+  READ
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+  REGISTER
+  PASSWORD_RESET
+  EMAIL_VERIFIED
+  STATUS_CHANGE
+  ASSIGN
+  ESCALATE
+  RESOLVE
+  VERIFY
+  REOPEN
+  UPLOAD
+  DOWNLOAD
+}
+
+// ─── Models ────────────────────────────────────────────────
+
+model User {
+  id                    String    @id @default(uuid())
+  email                 String    @unique
+  password              String
+  firstName             String
+  lastName              String
+  role                  Role      @default(CITIZEN)
+  isEmailVerified       Boolean   @default(false)
+  isPhoneVerified       Boolean   @default(false)
+  isActive              Boolean   @default(true)
+  phone                 String?
+  profileImageUrl       String?
+  citizenId             String?   @unique
+  departmentId          String?
+  preferredLanguage     String    @default("en")
+  notifEmail            Boolean   @default(true)
+  notifPush             Boolean   @default(true)
+  lastLoginAt           DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  // Relations
+  department            Department?        @relation(fields: [departmentId], references: [id])
+  complaints            Complaint[]        @relation("CitizenComplaints")
+  assignedComplaints    Complaint[]        @relation("OfficerComplaints")
+  refreshTokens         RefreshToken[]
+  emailVerifyTokens     EmailVerifyToken[]
+  passwordResetTokens   PasswordResetToken[]
+  otpCodes              OtpCode[]
+  notifications         Notification[]
+  timelineEvents        ComplaintTimeline[]
+  auditLogs             AuditLog[]
+
+  @@index([email])
+  @@index([citizenId])
+  @@index([role])
+  @@index([departmentId])
+  @@map("users")
+}
+
+model Department {
+  id          String      @id @default(uuid())
+  name        String      @unique
+  code        String      @unique
+  description String?
+  headEmail   String?
+  phone       String?
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  // Relations
+  users       User[]
+  complaints  Complaint[]
+
+  @@map("departments")
+}
+
+model RefreshToken {
+  id          String    @id @default(uuid())
+  token       String    @unique
+  userId      String
+  isRevoked   Boolean   @default(false)
+  userAgent   String?
+  ipAddress   String?
+  expiresAt   DateTime
+  createdAt   DateTime  @default(now())
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+model EmailVerifyToken {
+  id          String    @id @default(uuid())
+  token       String    @unique
+  userId      String
+  expiresAt   DateTime
+  usedAt      DateTime?
+  createdAt   DateTime  @default(now())
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+  @@map("email_verify_tokens")
+}
+
+model PasswordResetToken {
+  id          String    @id @default(uuid())
+  token       String    @unique
+  userId      String
+  expiresAt   DateTime
+  usedAt      DateTime?
+  createdAt   DateTime  @default(now())
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+  @@map("password_reset_tokens")
+}
+
+model OtpCode {
+  id          String    @id @default(uuid())
+  code        String
+  userId      String
+  type        OtpType
+  expiresAt   DateTime
+  usedAt      DateTime?
+  createdAt   DateTime  @default(now())
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([code])
+  @@map("otp_codes")
+}
+
+model Complaint {
+  id                    String              @id @default(uuid())
+  complaintNumber       String              @unique // e.g., JANSEVA-2026-1245
+  title                 String
+  description           String
+  category              ComplaintCategory
+  priority              ComplaintPriority   @default(MEDIUM)
+  status                ComplaintStatus     @default(DRAFT)
+  
+  // Location
+  address               String?
+  locality              String?
+  landmark              String?
+  nearestRoad           String?
+  city                  String?
+  state                 String?
+  pincode               String?
+  latitude              Float?
+  longitude             Float?
+
+  // AI Analysis
+  aiCategory            String?
+  aiDepartment          String?
+  aiPriority            String?
+  aiConfidence          Float?
+  aiIsCritical          Boolean?
+  isDuplicate           Boolean?
+  aiSummary             String?
+  aiDepartmentSuggestion String?
+  aiAnalyzedAt          DateTime?
+
+  // Assignment
+  citizenId             String
+  officerId             String?
+  departmentId          String?
+
+  // Resolution
+  resolutionNote        String?
+  resolvedAt            DateTime?
+  verifiedAt            DateTime?
+  closedAt              DateTime?
+  estimatedResolutionAt DateTime?
+
+  // Field Officer & Citizen Verification
+  fieldOfficerVerifiedAt      DateTime?
+  citizenVerification         String?     // "YES" or "NO"
+  citizenVerificationReason   String?
+  citizenVerifiedAt           DateTime?
+
+  // Feedback
+  rating                Int?               // 1-5 stars
+  ratingComment         String?
+  ratedAt               DateTime?
+
+  // Reopen
+  reopenCount           Int                @default(0)
+  lastReopenReason      String?
+  lastReopenedAt        DateTime?
+
+  // Flags
+  isPublic              Boolean            @default(false)
+  isDraft               Boolean            @default(false)
+
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+
+  // Relations
+  citizen               User               @relation("CitizenComplaints", fields: [citizenId], references: [id])
+  officer               User?              @relation("OfficerComplaints", fields: [officerId], references: [id])
+  department            Department?        @relation(fields: [departmentId], references: [id])
+  timeline              ComplaintTimeline[]
+  media                 ComplaintMedia[]
+  notifications         Notification[]
+
+  @@index([complaintNumber])
+  @@index([citizenId])
+  @@index([officerId])
+  @@index([departmentId])
+  @@index([status])
+  @@index([category])
+  @@index([priority])
+  @@index([createdAt])
+  @@map("complaints")
+}
+
+model ComplaintTimeline {
+  id            String             @id @default(uuid())
+  complaintId   String
+  eventType     TimelineEventType
+  title         String
+  description   String?
+  previousStatus ComplaintStatus?
+  newStatus     ComplaintStatus?
+  actorId       String?
+  actorName     String?
+  actorRole     String?
+  metadata      Json?              // Flexible extra data
+  createdAt     DateTime           @default(now())
+
+  complaint     Complaint          @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  actor         User?              @relation(fields: [actorId], references: [id])
+
+  @@index([complaintId])
+  @@index([createdAt])
+  @@map("complaint_timeline")
+}
+
+model ComplaintMedia {
+  id            String      @id @default(uuid())
+  complaintId   String
+  filename      String
+  originalName  String
+  mimeType      String
+  size          Int
+  url           String
+  mediaType     MediaType
+  role          MediaRole   @default(COMPLAINT_EVIDENCE)
+  uploadedById  String?
+  createdAt     DateTime    @default(now())
+
+  complaint     Complaint   @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+
+  @@index([complaintId])
+  @@map("complaint_media")
+}
+
+model Notification {
+  id            String              @id @default(uuid())
+  userId        String
+  complaintId   String?
+  type          NotificationType
+  title         String
+  message       String
+  isRead        Boolean             @default(false)
+  readAt        DateTime?
+  metadata      Json?
+  createdAt     DateTime            @default(now())
+
+  user          User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  complaint     Complaint?          @relation(fields: [complaintId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+model AuditLog {
+  id            String       @id @default(uuid())
+  userId        String?
+  action        AuditAction
+  resource      String       // Table/resource name
+  resourceId    String?      // ID of the resource
+  description   String
+  ipAddress     String?
+  userAgent     String?
+  metadata      Json?
+  createdAt     DateTime     @default(now())
+
+  user          User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([resource])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

@@ -1,0 +1,71 @@
+{
+  "app": {
+    "title": "JANSEVA GeoVision",
+    "subtitle": "Real-time Civic Intelligence"
+  },
+  "landing": {
+    "welcome": "Welcome to JANSEVA",
+    "description": "Report civic issues instantly or manage city infrastructure with spatial intelligence.",
+    "citizen_btn": "I am a Citizen",
+    "admin_btn": "Administrator Console"
+  },
+  "citizen": {
+    "report_issue": "Report an Issue",
+    "tabs": {
+      "photo": "Photo",
+      "text": "Text",
+      "voice": "Voice"
+    },
+    "upload_prompt": "Tap to capture or upload a photo",
+    "upload_subtext": "Photos with location enabled help us respond faster",
+    "describe_prompt": "Describe the issue (e.g., Water leaking on main road)",
+    "voice_prompt": "Tap to speak your complaint",
+    "voice_recording": "Listening...",
+    "location_required": "Location Required",
+    "location_desc": "We need to know where the issue is. Please allow location access or select on map.",
+    "detecting_location": "Detecting location...",
+    "submit_btn": "Submit Report",
+    "submitting": "Submitting...",
+    "success_title": "Report Submitted",
+    "success_desc": "Your civic issue has been logged and assigned a tracking ID.",
+    "track_btn": "Track Status",
+    "status": {
+      "title": "Complaint Status",
+      "reported": "Report Logged",
+      "assigned": "Assigned to Team",
+      "repair_submitted": "Repair Evidence Submitted",
+      "awaiting_citizen_confirm": "Verification Required",
+      "verified_resolved": "Resolved",
+      "confirm_prompt": "The team has reported this issue as resolved. Please verify the after photo.",
+      "confirm_yes": "Yes, it is fixed",
+      "confirm_no": "No, reopen issue"
+    }
+  },
+  "admin": {
+    "dashboard": "Command Centre",
+    "incidents": "Incidents",
+    "cluster_btn": "Run Spatial Clustering",
+    "clustering": "Clustering...",
+    "no_incidents": "No active incidents found.",
+    "search": "Search incidents...",
+    "detail": {
+      "priority": "Priority Score",
+      "impact": "Impact Radius",
+      "complaints": "Complaints",
+      "ward": "Ward",
+      "department": "Assigned To",
+      "sla": "SLA Status",
+      "timeline": "Timeline",
+      "evidence": "Evidence",
+      "upload_repair": "Upload Repair Evidence",
+      "export_pdf": "Export Report"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "cancel": "Cancel",
+    "save": "Save",
+    "back": "Back"
+  }
+}
